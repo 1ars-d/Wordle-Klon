@@ -1,0 +1,33 @@
+import useKey from "./use-key";
+
+export const useCreateKeys = (keyAddHandler) => {
+  useKey("KeyA", () => keyAddHandler("A"));
+  useKey("KeyB", () => keyAddHandler("B"));
+  useKey("KeyC", () => keyAddHandler("C"));
+  useKey("KeyD", () => keyAddHandler("D"));
+  useKey("KeyE", () => keyAddHandler("E"));
+  useKey("KeyF", () => keyAddHandler("F"));
+  useKey("KeyG", () => keyAddHandler("G"));
+  useKey("KeyH", () => keyAddHandler("H"));
+  useKey("KeyI", () => keyAddHandler("I"));
+  useKey("KeyJ", () => keyAddHandler("J"));
+  useKey("KeyK", () => keyAddHandler("K"));
+  useKey("KeyL", () => keyAddHandler("L"));
+  useKey("KeyM", () => keyAddHandler("M"));
+  useKey("KeyN", () => keyAddHandler("N"));
+  useKey("KeyO", () => keyAddHandler("O"));
+  useKey("KeyP", () => keyAddHandler("P"));
+  useKey("KeyQ", () => keyAddHandler("Q"));
+  useKey("KeyR", () => keyAddHandler("R"));
+  useKey("KeyS", () => keyAddHandler("S"));
+  useKey("KeyT", () => keyAddHandler("T"));
+  useKey("KeyU", () => keyAddHandler("U"));
+  useKey("KeyV", () => keyAddHandler("V"));
+  useKey("KeyW", () => keyAddHandler("W"));
+  useKey("KeyX", () => keyAddHandler("X"));
+  useKey("KeyY", () => keyAddHandler("Y"));
+  useKey("KeyZ", () => keyAddHandler("Z"));
+  useKey("Enter", () => keyAddHandler("enter"));
+  useKey("Space", () => keyAddHandler("enter"));
+  useKey("Backspace", () => keyAddHandler("backspace"));
+};
