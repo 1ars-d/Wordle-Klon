@@ -33,16 +33,6 @@ export const Settingsmenu = (props) => {
                }}
             />
          </div>
-         <div className="footer">
-            <span>
-               <Link to="/privacy-policy">Privacy Policy</Link>
-               <p>Copyright 2021-2022. All Rights Reserved.</p>
-            </span>
-            <span>
-               <br />
-               <p>Developed by Lars</p>
-            </span>
-         </div>
       </div>
    );
 };
