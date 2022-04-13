@@ -201,7 +201,7 @@ html {
 .guess-grid {
    display: grid;
    justify-content: center;
-   align-content: center;
+   align-content: flex-start;
    flex-grow: 1;
    grid-template-columns: repeat(5, 3.5em);
    grid-template-rows: repeat(6, 3.5em);
