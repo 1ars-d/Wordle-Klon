@@ -24,7 +24,7 @@ const ManualMenu = (props) => {
               Versuchen.
             </p>
             <p style={{ marginBottom: "10px" }}>
-              Jeder Versuch muss ein echtes fünf Buchstaben-langes Wort sein.
+              Jeder Versuch muss ein echtes fünf Buchstaben langes Wort sein.
               Clicke den "ENTER" Button zum Bestätigen.
             </p>
             <p>
@@ -337,7 +337,7 @@ const ManualMenu = (props) => {
               marginTop: "10px",
             }}
           >
-            Der Buchstabe <span style={{ fontWeight: "bold" }}>U</span> ist
+            Der Buchstabe <span style={{ fontWeight: "bold" }}>K</span> ist
             nicht im Wort.
           </p>
         ) : (

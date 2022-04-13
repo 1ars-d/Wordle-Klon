@@ -11,11 +11,11 @@ export default LanguageContext;
 
 export const LANGUAGE_OPTIONS = [
   {
-    id: uuid(),
+    id: "lang_1",
     name: "Deutsch",
   },
   {
-    id: uuid(),
+    id: "lang_2",
     name: "English",
   },
 ];
