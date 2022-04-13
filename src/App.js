@@ -12,10 +12,11 @@ import {
   DICTIONARY_DEUTSCH,
 } from "./Data/DATA";
 
-import { reducer } from "./Data/Tilereducer";
+import { parseCase, reducer } from "./Data/Tilereducer";
 import { Settingsmenu } from "./components/Menus/Settingsmenu";
 import { useCreateKeys } from "./hooks/create-keys";
 import LanguageContext from "./Contexts/LanguageContext";
+import ManualMenu from "./components/Menus/ManualMenu";
 
 function App() {
   const [tiles, dispatchTiles] = useReducer(reducer, INIT_STATE);
@@ -23,6 +24,7 @@ function App() {
   const [hasEnded, setHasEnded] = useState({ ended: false, won: false });
   const [endMessage, setEndMessage] = useState(INIT_END_MESSAGE_STATE);
   const [showSettings, setShowSettings] = useState(false);
+  const [showManual, setShowManual] = useState(false);
   const [devMode, setDevMode] = useState();
   const [darkTheme, setDarkTheme] = useState();
   const { language } = useContext(LanguageContext);
@@ -46,6 +48,10 @@ function App() {
   }, [tiles.errors]);
 
   useEffect(() => {
+    restartGame();
+  }, [language]);
+
+  useEffect(() => {
     if (hasEnded.ended) {
       return;
     }
@@ -55,7 +61,7 @@ function App() {
       row.forEach((item) => {
         word += item.value;
       });
-      if (word.toLowerCase() === target) {
+      if (parseCase(word, language) === target) {
         setEndMessage({ won: true, target: target });
         return setHasEnded({ ended: true, won: true });
       }
@@ -145,7 +151,19 @@ function App() {
         <Settingsmenu
           darkTheme={darkTheme}
           setDarkTheme={setDarkTheme}
-          onClose={setShowSettings}
+          onClose={() => setShowSettings(false)}
+          setDevMode={setDevMode}
+          devMode={devMode}
+        />
+      </CSSTransition>
+      <CSSTransition
+        in={showManual}
+        timeout={100}
+        classNames="menu"
+        unmountOnExit
+      >
+        <ManualMenu
+          onClose={() => setShowManual(false)}
           setDevMode={setDevMode}
           devMode={devMode}
         />
@@ -162,7 +180,7 @@ function App() {
           onRestart={restartGame}
         />
       </CSSTransition>
-      <Header onSettings={setShowSettings} />
+      <Header onSettings={setShowSettings} onManual={setShowManual} />
       <Grid tiles={tiles.tiles} removeWiggle={removeWiggle} />
       <Keyboard onKey={keyAddHandler} tiles={tiles.tiles} />
     </div>

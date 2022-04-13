@@ -410,7 +410,6 @@ export const DICTIONARY_DEUTSCH = [
   "ORDRE",
   "PODEX",
   "AESSE",
-  "PORNO",
   "THANE",
   "WERKT",
   "ERNTE",

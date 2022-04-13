@@ -9,7 +9,7 @@ const LanguageContext = React.createContext({
 
 export default LanguageContext;
 
-const LANGUAGE_OPTIONS = [
+export const LANGUAGE_OPTIONS = [
   {
     id: uuid(),
     name: "Deutsch",
@@ -22,17 +22,20 @@ const LANGUAGE_OPTIONS = [
 
 export const LanguageContextProvider = ({ children }) => {
   const [language, setLanguage] = useState(
-    localStorage.getItem("WORDLE_LANG")
-      ? localStorage.getItem("WORDLE_LANG")
+    localStorage.getItem("WORDSLE_LANG")
+      ? JSON.parse(localStorage.getItem("WORDSLE_LANG"))
       : LANGUAGE_OPTIONS[0]
   );
 
-  useEffect(() => {
-    localStorage.setItem("WORDLE_LANG", language);
-  }, [language]);
+  const setLanguageHandler = (newLanguage) => {
+    localStorage.setItem("WORDSLE_LANG", JSON.stringify(newLanguage));
+    setLanguage(newLanguage);
+  };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <LanguageContext.Provider
+      value={{ language: language, setLanguage: setLanguageHandler }}
+    >
       {children}
     </LanguageContext.Provider>
   );

@@ -3,6 +3,8 @@ import React from "react";
 const Key = (props) => {
   return (
     <button
+      tabindex="-1"
+      selectable="false"
       className={`key ${props.large ? "large" : ""} ${
         props.state ? props.state : ""
       }`}

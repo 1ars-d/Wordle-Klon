@@ -5,6 +5,7 @@ export const reducer = ({ tiles: state, errors }, action) => {
     action.language.name === "English"
       ? DICTIONARY_ENGLISH
       : DICTIONARY_DEUTSCH;
+
   switch (action.type) {
     case "ADD_KEY":
       if (state[29].value === "") {
@@ -91,13 +92,14 @@ export const reducer = ({ tiles: state, errors }, action) => {
         let copy = prev.slice();
         if (
           !DICTIONARY.includes(
-            (
+            parseCase(
               copy[25].value +
-              copy[26].value +
-              copy[27].value +
-              copy[28].value +
-              copy[29].value
-            ).toLowerCase()
+                copy[26].value +
+                copy[27].value +
+                copy[28].value +
+                copy[29].value,
+              action.language
+            )
           )
         ) {
           copy[25].class += "animation-wiggle ";
@@ -107,11 +109,27 @@ export const reducer = ({ tiles: state, errors }, action) => {
           copy[29].class += "animation-wiggle ";
           let errors_copy = [...errors];
           const time = Date.now();
-          errors_copy.push({ show: true, value: "Not in word list" });
+          console.log(
+            parseCase(
+              copy[25].value +
+                copy[26].value +
+                copy[27].value +
+                copy[28].value +
+                copy[29].value,
+              action.language
+            )
+          );
+          errors_copy.push({
+            show: true,
+            value:
+              action.language.name === "English"
+                ? "Not in word list"
+                : "Wort nicht in Liste",
+          });
           return { tiles: copy, errors: errors_copy, create: time };
         }
         for (let i = 25; i < 30; i++) {
-          const letter = copy[i].value.toLowerCase();
+          const letter = parseCase(copy[i].value, action.language);
           if (target.includes(letter)) {
             if (target.indexOf(letter) === i - 25) {
               copy[i].state = "correct";
@@ -154,13 +172,14 @@ export const reducer = ({ tiles: state, errors }, action) => {
         let copy = prev.slice();
         if (
           !DICTIONARY.includes(
-            (
+            parseCase(
               copy[enter_empty.id - 6].value +
-              copy[enter_empty.id - 5].value +
-              copy[enter_empty.id - 4].value +
-              copy[enter_empty.id - 3].value +
-              copy[enter_empty.id - 2].value
-            ).toLowerCase()
+                copy[enter_empty.id - 5].value +
+                copy[enter_empty.id - 4].value +
+                copy[enter_empty.id - 3].value +
+                copy[enter_empty.id - 2].value,
+              action.language
+            )
           )
         ) {
           copy[enter_empty.id - 2].class += "animation-wiggle ";
@@ -170,16 +189,32 @@ export const reducer = ({ tiles: state, errors }, action) => {
           copy[enter_empty.id - 6].class += "animation-wiggle ";
           let errors_copy = [...errors];
           const time = Date.now();
+          console.log(
+            parseCase(
+              copy[enter_empty.id - 6].value +
+                copy[enter_empty.id - 5].value +
+                copy[enter_empty.id - 4].value +
+                copy[enter_empty.id - 3].value +
+                copy[enter_empty.id - 2].value,
+              action.language
+            )
+          );
           errors_copy.push({
             show: true,
-            value: "Not in word list",
+            value:
+              action.language.name === "English"
+                ? "Not in word list"
+                : "Wort nicht in Liste",
             create: time,
           });
           return { tiles: copy, errors: errors_copy };
         }
 
         for (let i = 1; i < 6; i++) {
-          const letter = copy[(row - 1) * 5 - 6 + i].value.toLowerCase();
+          const letter = parseCase(
+            copy[(row - 1) * 5 - 6 + i].value,
+            action.language
+          );
           if (target.includes(letter)) {
             if (target.indexOf(letter) === i - 1) {
               copy[(row - 1) * 5 - 6 + i].state = "correct";
@@ -212,7 +247,10 @@ export const reducer = ({ tiles: state, errors }, action) => {
       const time = Date.now();
       new_errors.push({
         show: true,
-        value: "Not enough letters",
+        value:
+          action.language.name === "English"
+            ? "Not enough letters"
+            : "Zu wenige Buchstaben",
         create: time,
       });
       return { tiles: state, errors: new_errors };
@@ -231,5 +269,13 @@ export const reducer = ({ tiles: state, errors }, action) => {
       return { tiles: state, errors: remove_copy };
     default:
       return { tiles: state, errors };
+  }
+};
+
+export const parseCase = (word, language) => {
+  if (language.name === "Deutsch") {
+    return word.toUpperCase();
+  } else {
+    return word.toLowerCase();
   }
 };

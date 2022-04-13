@@ -1,0 +1,97 @@
+.selector {
+  position: relative;
+  width: fit-content;
+  min-width: 10rem;
+}
+
+.active {
+  padding: 7px;
+  width: 100%;
+  font-size: 1rem;
+  border: 2px solid rgb(153, 153, 153);
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  border-radius: 3px;
+  margin: 5px 0;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active p {
+  padding-bottom: 2px;
+}
+
+.active svg {
+  transform: rotate(180deg);
+  height: 1.2rem;
+  width: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.active:hover {
+  background: #dbdbdb14;
+}
+
+.options {
+  z-index: 100;
+  height: fit-content;
+  position: absolute;
+  top: calc(100% + 0.2rem);
+  width: 100%;
+  bottom: 2rem;
+  background-color: var(--main-bg-color);
+  border-radius: 3px;
+  box-shadow: 0 0 8px var(--shadow-color);
+}
+
+.options div {
+  font-size: 1rem;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  padding-right: 15px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.options div:hover {
+  background: rgba(0, 0, 0, 0.047);
+}
+
+.options :first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.options :last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+.activeblue {
+  color: var(--main-green);
+  background: #6a9c6823;
+}
+
+.backdrop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.activeActive {
+  color: var(--main-green);
+  border-color: var(--main-green);
+}
+
+.activeActive svg {
+  transform: rotate(0);
+}
