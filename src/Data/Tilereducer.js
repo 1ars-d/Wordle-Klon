@@ -1,6 +1,10 @@
-import { INIT_STATE, DICTIONARY } from "./DATA";
+import { INIT_STATE, DICTIONARY_ENGLISH, DICTIONARY_DEUTSCH } from "./DATA";
 
 export const reducer = ({ tiles: state, errors }, action) => {
+  const DICTIONARY =
+    action.language.name === "English"
+      ? DICTIONARY_ENGLISH
+      : DICTIONARY_DEUTSCH;
   switch (action.type) {
     case "ADD_KEY":
       if (state[29].value === "") {

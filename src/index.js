@@ -6,16 +6,19 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import PrivacyPolicy from "./PrivacyPolicy";
 import PageNotFound from "./PageNotFound";
+import { LanguageContextProvider } from "./Contexts/LanguageContext";
 
 ReactDOM.render(
-   <React.StrictMode>
+  <React.StrictMode>
+    <LanguageContextProvider>
       <BrowserRouter>
-         <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="*" element={<PageNotFound />} />
-         </Routes>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
       </BrowserRouter>
-   </React.StrictMode>,
-   document.getElementById("root")
+    </LanguageContextProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
