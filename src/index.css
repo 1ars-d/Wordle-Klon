@@ -3,7 +3,7 @@
   --main-gray-outline: #e3e3e3b9;
   --main-dark-gray: #a1a1a1b9;
   --wrong: #4b4b4b;
-  --main-gray-light: #7a7a7a;
+  --main-gray-light: #818384;
   --main-white-dark: #e8ebec;
   --main-orange: #f4bc7d;
   --main-green: #6a9c68;
@@ -21,12 +21,12 @@
   --main-bg-color: #ffffff;
   --main-gray-outline: #444444b9;
   --main-dark-gray: #8b8b8bb9;
-  --main-gray-light: #cacaca;
+  --main-gray-light: #d3d6da;
   --main-white-dark: #2e2e2e;
   --main-orange: #f4bc7d;
   --main-green: #6a9c68;
-  --main-gray: #575757;
-  --wrong: #575757;
+  --main-gray: #797979;
+  --wrong: #797979;
   --key-color: #2e2e2e;
   --tile-color: #2e2e2e;
   --alert-bg: #2d3031;
@@ -131,6 +131,7 @@ html {
   grid-column: span 2;
   border: none;
   display: flex;
+  font-size: 1.3rem;
   justify-content: center;
   align-items: center;
   background-color: var(--main-gray-light);
@@ -166,6 +167,10 @@ html {
   background: var(--main-orange);
 }
 
+.tile-shadow {
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.08);
+}
+
 .key.correct {
   color: white;
   background: var(--main-green);
@@ -190,6 +195,7 @@ html {
 }
 
 .tile {
+  border-radius: 2px;
   grid-column: span 1;
   border: 0.05em solid var(--main-dark-gray);
   color: var(--tile-color);
@@ -199,6 +205,7 @@ html {
   font-weight: bold;
   font-size: 1.6em;
   user-select: none;
+  transition: box-shadow 0.5s ease;
   text-transform: uppercase;
 }
 
@@ -213,7 +220,7 @@ html {
   flex-grow: 1;
   grid-template-columns: repeat(5, 3.5em);
   grid-template-rows: repeat(6, 3.5em);
-  gap: 0.25em;
+  gap: 0.3em;
   margin-bottom: 1em;
 }
 
@@ -228,13 +235,33 @@ html {
   }
 }
 
-.animation-rotate {
-  animation: rotate 0.4s ease;
+.animation-rotate-0 {
+  animation: rotate 0.8s;
+}
+
+.animation-rotate-200 {
+  animation: rotate 0.8s;
+  animation-delay: 200ms;
+}
+
+.animation-rotate-400 {
+  animation: rotate 0.8s;
+  animation-delay: 400ms;
+}
+
+.animation-rotate-600 {
+  animation: rotate 0.8s;
+  animation-delay: 600ms;
+}
+
+.animation-rotate-800 {
+  animation: rotate 0.8s;
+  animation-delay: 800ms;
 }
 
 @keyframes bounce {
   50% {
-    transform: scale(1.1);
+    transform: scale(1.15);
   }
 
   100% {

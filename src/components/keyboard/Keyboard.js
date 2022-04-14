@@ -63,7 +63,7 @@ const Keyboard = (props) => {
       <div className="space"></div>
       {groups[1]}
       <div className="space"></div>
-      <Key value="enter" large onPress={props.onKey}>
+      <Key value="enter" large onPress={props.onKey} enter>
         Enter
       </Key>
       {groups[2]}

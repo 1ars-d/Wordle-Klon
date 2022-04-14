@@ -55,21 +55,23 @@ function App() {
     if (hasEnded.ended) {
       return;
     }
-    for (let i = 0; i < 7; i++) {
-      const row = tiles.tiles.filter((item) => item.row === i && item.done);
-      let word = "";
-      row.forEach((item) => {
-        word += item.value;
-      });
-      if (parseCase(word, language) === target) {
-        setEndMessage({ won: true, target: target });
-        return setHasEnded({ ended: true, won: true });
+    setTimeout(() => {
+      for (let i = 0; i < 7; i++) {
+        const row = tiles.tiles.filter((item) => item.row === i && item.done);
+        let word = "";
+        row.forEach((item) => {
+          word += item.value;
+        });
+        if (parseCase(word, language) === target) {
+          setEndMessage({ won: true, target: target });
+          return setHasEnded({ ended: true, won: true });
+        }
       }
-    }
-    if (tiles.tiles[29].done) {
-      setEndMessage({ won: false, target: target });
-      return setHasEnded({ ended: true, won: false });
-    }
+      if (tiles.tiles[29].done) {
+        setEndMessage({ won: false, target: target });
+        return setHasEnded({ ended: true, won: false });
+      }
+    }, 1400);
   }, [tiles.tiles, target, hasEnded.ended]);
 
   useEffect(() => {

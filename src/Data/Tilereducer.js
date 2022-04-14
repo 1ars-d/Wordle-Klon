@@ -109,16 +109,6 @@ export const reducer = ({ tiles: state, errors }, action) => {
           copy[29].class += "animation-wiggle ";
           let errors_copy = [...errors];
           const time = Date.now();
-          console.log(
-            parseCase(
-              copy[25].value +
-                copy[26].value +
-                copy[27].value +
-                copy[28].value +
-                copy[29].value,
-              action.language
-            )
-          );
           errors_copy.push({
             show: true,
             value:
@@ -159,7 +149,6 @@ export const reducer = ({ tiles: state, errors }, action) => {
           } else {
             copy[i].state = "wrong";
           }
-          copy[i].class += "animation-rotate ";
           copy[i].done = true;
         }
         let targetCount = {};
@@ -226,16 +215,6 @@ export const reducer = ({ tiles: state, errors }, action) => {
           copy[enter_empty.id - 6].class += "animation-wiggle ";
           let errors_copy = [...errors];
           const time = Date.now();
-          console.log(
-            parseCase(
-              copy[enter_empty.id - 6].value +
-                copy[enter_empty.id - 5].value +
-                copy[enter_empty.id - 4].value +
-                copy[enter_empty.id - 3].value +
-                copy[enter_empty.id - 2].value,
-              action.language
-            )
-          );
           errors_copy.push({
             show: true,
             value:
@@ -280,7 +259,6 @@ export const reducer = ({ tiles: state, errors }, action) => {
           } else {
             copy[(row - 1) * 5 - 6 + i].state = "wrong";
           }
-          copy[(row - 1) * 5 - 6 + i].class += "animation-rotate ";
           copy[(row - 1) * 5 - 6 + i].done = true;
         }
         let targetCount = {};
