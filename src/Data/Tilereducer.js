@@ -246,7 +246,7 @@ export const reducer = ({ tiles: state, errors }, action) => {
           copy[(row - 1) * 5 - 6 + i].class += "animation-rotate ";
           copy[(row - 1) * 5 - 6 + i].done = true;
         }
-        let targetCount = {};
+        /* let targetCount = {};
         for (let i = 0; i < target.length; i++) {
           const letter = target[i];
           if (targetCount[letter]) {
@@ -265,7 +265,7 @@ export const reducer = ({ tiles: state, errors }, action) => {
               copy[(row - 1) * 5 - 6 + i].state = "wrong";
             }
           }
-        }
+        } */
         return { tiles: copy, errors };
       }
       const new_errors = [...errors];
