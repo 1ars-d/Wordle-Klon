@@ -209,12 +209,17 @@ export const reducer = ({ tiles: state, errors }, action) => {
           });
           return { tiles: copy, errors: errors_copy };
         }
-
+        let letterCount = {};
         for (let i = 1; i < 6; i++) {
           const letter = parseCase(
             copy[(row - 1) * 5 - 6 + i].value,
             action.language
           );
+          if (letterCount[letter]) {
+            letterCount[letter] += 1;
+          } else {
+            letterCount[letter] = 1;
+          }
           if (target.includes(letter)) {
             if (target.indexOf(letter) === i - 1) {
               copy[(row - 1) * 5 - 6 + i].state = "correct";
@@ -240,6 +245,26 @@ export const reducer = ({ tiles: state, errors }, action) => {
           }
           copy[(row - 1) * 5 - 6 + i].class += "animation-rotate ";
           copy[(row - 1) * 5 - 6 + i].done = true;
+        }
+        let targetCount = {};
+        for (let i = 0; i < target.length; i++) {
+          const letter = target[i];
+          if (targetCount[letter]) {
+            targetCount[letter] += 1;
+          } else {
+            targetCount[letter] = 1;
+          }
+        }
+        for (let i = 1; i < 6; i++) {
+          const letter = parseCase(
+            copy[(row - 1) * 5 - 6 + i].value,
+            action.language
+          );
+          if (letterCount[letter] > target.count(letter)) {
+            if (copy[(row - 1) * 5 - 6 + i].state !== "correct") {
+              copy[(row - 1) * 5 - 6 + i].state = "wrong";
+            }
+          }
         }
         return { tiles: copy, errors };
       }
