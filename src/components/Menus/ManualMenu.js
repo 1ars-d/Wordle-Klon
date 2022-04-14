@@ -141,7 +141,7 @@ const ManualMenu = (props) => {
               marginTop: "10px",
             }}
           >
-            Der Buchstabe <span style={{ fontWeight: "bold" }}>W</span> ist im
+            Der Buchstabe <span style={{ fontWeight: "bold" }}>L</span> ist im
             Wort und an der richtigen Stelle.
           </p>
         ) : (
