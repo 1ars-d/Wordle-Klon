@@ -159,7 +159,7 @@ html {
 
 .key.wrong {
   animation: wrong 0.2s ease forwards;
-  animation-delay: 1400ms;
+  animation-delay: 1300ms;
 }
 
 @keyframes wrong {
