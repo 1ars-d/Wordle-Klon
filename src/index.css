@@ -134,7 +134,7 @@ html {
   font-size: 1.3rem;
   justify-content: center;
   align-items: center;
-  background-color: var(--main-gray-light);
+  background: var(--main-gray-light);
   color: var(--key-color);
   fill: var(--key-color);
   border-radius: 0.25em;
@@ -158,13 +158,35 @@ html {
 }
 
 .key.wrong {
-  color: white;
-  background: var(--wrong);
+  animation: wrong 0.2s ease forwards;
+  animation-delay: 1400ms;
+}
+
+@keyframes wrong {
+  0% {
+    background: var(--main-gray-light);
+  }
+
+  100% {
+    color: white;
+    background: var(--wrong);
+  }
 }
 
 .key.wrong-location {
-  color: white;
-  background: var(--main-orange);
+  animation: wrong-location 0.2s ease forwards;
+  animation-delay: 1300ms;
+}
+
+@keyframes wrong-location {
+  0% {
+    background: var(--main-gray-light);
+  }
+
+  100% {
+    color: white;
+    background: var(--main-orange);
+  }
 }
 
 .tile-shadow {
@@ -172,8 +194,19 @@ html {
 }
 
 .key.correct {
-  color: white;
-  background: var(--main-green);
+  animation: correct 0.2s ease forwards;
+  animation-delay: 1300ms;
+}
+
+@keyframes correct {
+  0% {
+    background: var(--main-gray-light);
+  }
+
+  100% {
+    color: white;
+    background: var(--main-green);
+  }
 }
 
 .tile.wrong {
