@@ -24,13 +24,18 @@ const Keyboard = (props) => {
         );
         if (found) {
           return (
-            <Key value={letter} onPress={props.onKey} state={found.state}>
+            <Key
+              value={letter}
+              onPress={props.onKey}
+              state={found.state}
+              key={letter}
+            >
               {letter}
             </Key>
           );
         } else {
           return (
-            <Key value={letter} onPress={props.onKey}>
+            <Key value={letter} onPress={props.onKey} key={letter}>
               {letter}
             </Key>
           );

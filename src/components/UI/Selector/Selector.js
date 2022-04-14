@@ -10,8 +10,6 @@ import classes from "./Selector.module.css";
 const Selector = ({ active, setActive, options }) => {
   const [showOptions, setShowOptions] = useState(false);
 
-  console.log(active, options);
-
   return (
     <div className={classes.selector}>
       {showOptions &&
