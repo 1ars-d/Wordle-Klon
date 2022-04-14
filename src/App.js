@@ -128,8 +128,8 @@ function App() {
   };
 
   const generateTarget = () => {
-    const new_target = "WACHS";
-    /* TARGET_WORDS[Math.floor(Math.random() * TARGET_WORDS.length)]; */
+    const new_target =
+      TARGET_WORDS[Math.floor(Math.random() * TARGET_WORDS.length)];
     if (localStorage.getItem("WORDLE_2.0_DEV_MODE") === "true") {
       console.log(`The target word is: ${new_target}`);
     }

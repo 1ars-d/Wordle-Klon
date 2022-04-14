@@ -128,8 +128,14 @@ export const reducer = ({ tiles: state, errors }, action) => {
           });
           return { tiles: copy, errors: errors_copy, create: time };
         }
+        let letterCount = {};
         for (let i = 25; i < 30; i++) {
           const letter = parseCase(copy[i].value, action.language);
+          if (letterCount[letter]) {
+            letterCount[letter] += 1;
+          } else {
+            letterCount[letter] = 1;
+          }
           if (target.includes(letter)) {
             if (target.indexOf(letter) === i - 25) {
               copy[i].state = "correct";
@@ -155,6 +161,37 @@ export const reducer = ({ tiles: state, errors }, action) => {
           }
           copy[i].class += "animation-rotate ";
           copy[i].done = true;
+        }
+        let targetCount = {};
+        for (let i = 0; i < target.length; i++) {
+          const letter = target[i];
+          if (targetCount[letter]) {
+            targetCount[letter] += 1;
+          } else {
+            targetCount[letter] = 1;
+          }
+        }
+        let hasRemovedOrange = false;
+        for (let i = 25; i < 30; i++) {
+          const letter = parseCase(copy[i].value, action.language);
+          let hasCorrect = false;
+          for (let i = 25; i < 30; i++) {
+            const l = parseCase(copy[i].value, action.language);
+            if (l === letter && copy[i].state === "correct") {
+              hasCorrect = true;
+            }
+          }
+          if (
+            letterCount[letter] > 1 &&
+            letterCount[letter] > countLetters(target, letter)
+          ) {
+            if (hasCorrect && copy[i].state !== "correct") {
+              copy[i].state = "wrong";
+            } else if (!hasRemovedOrange && !hasCorrect) {
+              copy[i].state = "wrong";
+              hasRemovedOrange = true;
+            }
+          }
         }
         return { tiles: copy, errors };
       }
@@ -246,7 +283,7 @@ export const reducer = ({ tiles: state, errors }, action) => {
           copy[(row - 1) * 5 - 6 + i].class += "animation-rotate ";
           copy[(row - 1) * 5 - 6 + i].done = true;
         }
-        /* let targetCount = {};
+        let targetCount = {};
         for (let i = 0; i < target.length; i++) {
           const letter = target[i];
           if (targetCount[letter]) {
@@ -255,17 +292,37 @@ export const reducer = ({ tiles: state, errors }, action) => {
             targetCount[letter] = 1;
           }
         }
+        let hasRemovedOrange = false;
         for (let i = 1; i < 6; i++) {
           const letter = parseCase(
             copy[(row - 1) * 5 - 6 + i].value,
             action.language
           );
-          if (letterCount[letter] > target.count(letter)) {
-            if (copy[(row - 1) * 5 - 6 + i].state !== "correct") {
-              copy[(row - 1) * 5 - 6 + i].state = "wrong";
+          let hasCorrect = false;
+          for (let i = 1; i < 6; i++) {
+            const l = parseCase(
+              copy[(row - 1) * 5 - 6 + i].value,
+              action.language
+            );
+            if (
+              l === letter &&
+              copy[(row - 1) * 5 - 6 + i].state === "correct"
+            ) {
+              hasCorrect = true;
             }
           }
-        } */
+          if (
+            letterCount[letter] > 1 &&
+            letterCount[letter] > countLetters(target, letter)
+          ) {
+            if (hasCorrect && copy[(row - 1) * 5 - 6 + i].state !== "correct") {
+              copy[(row - 1) * 5 - 6 + i].state = "wrong";
+            } else if (!hasRemovedOrange && !hasCorrect) {
+              copy[(row - 1) * 5 - 6 + i].state = "wrong";
+              hasRemovedOrange = true;
+            }
+          }
+        }
         return { tiles: copy, errors };
       }
       const new_errors = [...errors];
@@ -303,4 +360,14 @@ export const parseCase = (word, language) => {
   } else {
     return word.toLowerCase();
   }
+};
+
+const countLetters = (word, letter) => {
+  let count = 0;
+  for (let i in word) {
+    if (word[i] === letter) {
+      count += 1;
+    }
+  }
+  return count;
 };

@@ -35,6 +35,7 @@ export const INIT_STATE = {
 };
 
 export const DICTIONARY_DEUTSCH = [
+  "GERNE",
   "AALEN",
   "ABART",
   "ABBAT",

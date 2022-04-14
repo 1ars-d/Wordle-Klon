@@ -3,10 +3,25 @@ import Key from "./Key";
 
 const Keyboard = (props) => {
   const tiles = [...props.tiles];
-  let colors = [];
+  let colors = {};
   tiles.forEach((tile) => {
     if (tile.done) {
-      colors.push({ letter: tile.value, state: tile.state });
+      if (!colors[tile.value.toLowerCase()]) {
+        colors[tile.value.toLowerCase()] = {
+          letter: tile.value,
+          state: tile.state,
+        };
+      } else if (tile.state === "correct") {
+        colors[tile.value.toLowerCase()] = {
+          letter: tile.value,
+          state: tile.state,
+        };
+      } else if (colors[tile.value.toLowerCase()].state === "wrong") {
+        colors[tile.value.toLowerCase()] = {
+          letter: tile.value,
+          state: tile.state,
+        };
+      }
     }
   });
 
@@ -19,9 +34,7 @@ const Keyboard = (props) => {
   letters.forEach((list) => {
     groups.push(
       list.map((letter) => {
-        const found = colors.find(
-          (item) => item.letter.toLowerCase() === letter.toLowerCase()
-        );
+        const found = colors[letter.toLowerCase()];
         if (found) {
           return (
             <Key
