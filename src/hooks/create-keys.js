@@ -1,6 +1,6 @@
 import useKey from "./use-key";
 
-export const useCreateKeys = (keyAddHandler) => {
+export const useCreateKeys = (keyAddHandler, isGerman) => {
   useKey("KeyA", () => keyAddHandler("A"));
   useKey("KeyB", () => keyAddHandler("B"));
   useKey("KeyC", () => keyAddHandler("C"));
@@ -25,8 +25,8 @@ export const useCreateKeys = (keyAddHandler) => {
   useKey("KeyV", () => keyAddHandler("V"));
   useKey("KeyW", () => keyAddHandler("W"));
   useKey("KeyX", () => keyAddHandler("X"));
-  useKey("KeyY", () => keyAddHandler("Y"));
-  useKey("KeyZ", () => keyAddHandler("Z"));
+  useKey("KeyY", () => keyAddHandler(isGerman ? "Z" : "Y"));
+  useKey("KeyZ", () => keyAddHandler(isGerman ? "Y" : "Z"));
   useKey("Enter", () => keyAddHandler("enter"));
   useKey("Space", () => keyAddHandler("enter"));
   useKey("Backspace", () => keyAddHandler("backspace"));

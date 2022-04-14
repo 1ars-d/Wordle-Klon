@@ -28,7 +28,7 @@ export const Settingsmenu = (props) => {
       </div>
       <div className="menu-part">
         <p>
-          {language.name === "Deutsch" ? "Entwickler Modus" : "Developer Mode"}
+          {language.name === "Deutsch" ? "Entwicklermodus" : "Developer Mode"}
         </p>
         <Switch
           active={props.devMode}

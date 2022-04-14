@@ -118,7 +118,7 @@ function App() {
     }
   };
 
-  useCreateKeys(keyAddHandler);
+  useCreateKeys(keyAddHandler, language.name === "Deutsch");
 
   const restartGame = () => {
     dispatchTiles({ type: "RESET", language });
