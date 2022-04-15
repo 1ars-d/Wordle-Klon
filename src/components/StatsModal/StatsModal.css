@@ -1,0 +1,82 @@
+.dark-mode {
+  --main-bg-color: #2d3031;
+  --main-gray-outline: #e3e3e3b9;
+  --main-dark-gray: #a1a1a1b9;
+  --wrong: #4b4b4b;
+  --main-gray-light: #818384;
+  --main-white-dark: #e8ebec;
+  --main-orange: #f4bc7d;
+  --main-green: #6a9c68;
+  --shadow-color: rgba(0, 0, 0, 0.336);
+  --main-gray: #575757;
+  --key-color: white;
+  --tile-color: rgb(243, 243, 243);
+  --alert-bg: rgb(243, 243, 243);
+  --alert-color: #2d3031;
+  --game-end-bg: #575757;
+}
+
+.white-mode {
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --main-bg-color: #ffffff;
+  --main-gray-outline: #444444b9;
+  --main-dark-gray: #8b8b8bb9;
+  --main-gray-light: #d3d6da;
+  --main-white-dark: #2e2e2e;
+  --main-orange: #f4bc7d;
+  --main-green: #6a9c68;
+  --main-gray: #797979;
+  --wrong: #797979;
+  --key-color: #2e2e2e;
+  --tile-color: #2e2e2e;
+  --alert-bg: #2d3031;
+  --alert-color: rgb(243, 243, 243);
+  --game-end-bg: #ffffff;
+}
+
+.stats-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--alert-bg);
+  box-shadow: 2px 4px 8px r gba(0, 0, 0, 0.185);
+  z-index: 10000;
+  padding: 20px;
+  max-width: 30rem;
+  border-radius: 5px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.stats-modal svg {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.stats-modal svg:hover {
+  opacity: 0.8;
+}
+
+.stats {
+  display: flex;
+  margin-top: 10px;
+  gap: 15px;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.value {
+  font-size: 2rem;
+}
