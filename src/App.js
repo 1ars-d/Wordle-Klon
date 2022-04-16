@@ -10,6 +10,7 @@ import {
   INIT_END_MESSAGE_STATE,
   INIT_STATE,
   TARGET_WORDS_ENGLISH,
+  TARGET_WORDS_DEUTSCH,
   DICTIONARY_DEUTSCH,
 } from "./Data/DATA";
 
@@ -33,7 +34,7 @@ function App() {
   const [darkTheme, setDarkTheme] = useState();
   const { language } = useContext(LanguageContext);
   const TARGET_WORDS =
-    language.name === "English" ? TARGET_WORDS_ENGLISH : DICTIONARY_DEUTSCH;
+    language.name === "English" ? TARGET_WORDS_ENGLISH : TARGET_WORDS_DEUTSCH;
 
   useEffect(() => {
     const interval = setInterval(() => {
