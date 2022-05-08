@@ -59,6 +59,7 @@ const ManualMenu = (props) => {
         <div style={{ marginTop: "1.5rem", display: "flex", gap: "8px" }}>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               animation: "rotate .5s ease",
@@ -76,6 +77,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -91,6 +93,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -106,6 +109,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -121,6 +125,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -157,6 +162,7 @@ const ManualMenu = (props) => {
         <div style={{ marginTop: "1.5rem", display: "flex", gap: "8px" }}>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -172,6 +178,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               animation: "rotate .5s ease",
@@ -189,6 +196,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -204,6 +212,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -219,6 +228,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -255,6 +265,7 @@ const ManualMenu = (props) => {
         <div style={{ marginTop: "1.5rem", display: "flex", gap: "8px" }}>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -270,6 +281,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -285,6 +297,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",
@@ -300,6 +313,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               animation: "rotate .5s ease",
               height: "3rem",
@@ -317,6 +331,7 @@ const ManualMenu = (props) => {
           </div>
           <div
             style={{
+              borderRadius: "2px",
               width: "3rem",
               height: "3rem",
               border: "1px solid gray",

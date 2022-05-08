@@ -112,7 +112,7 @@ const Tile = (props) => {
     }
   }, [props.value]);
 
-  let classes = props.classes + "tile ";
+  let classes = `${props.classes} tile ${props.active ? "active-tile" : ""}`;
   if (props.value !== "") {
     classes += " outline-dark";
   }

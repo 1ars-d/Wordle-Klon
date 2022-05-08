@@ -12,9 +12,22 @@ const Header = (props) => {
           title={language.name === "Deutsch" ? "anleitung" : "manual"}
           alt=""
           src="/IMG/question-mark.svg"
+          style={{ marginRight: "10px" }}
+        />
+        <img
+          onClick={() => {
+            props.setDarkTheme(!props.darkTheme);
+            localStorage.setItem("WORDLE_2.0_DARK_THEME", !props.darkTheme);
+          }}
+          title={language.name === "Deutsch" ? "Nachmodus" : "nightmode"}
+          alt=""
+          src={props.darkTheme ? "/IMG/moon-filled.svg" : "/IMG/moon.svg"}
         />
       </div>
-      <h1>WORDSLE</h1>
+      <h1>
+        <span className="title-green">W</span>ORD
+        <span className="title-orange">S</span>LE
+      </h1>
       <div
         style={{
           display: "flex",

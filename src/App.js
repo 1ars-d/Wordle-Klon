@@ -39,14 +39,26 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (tiles.errors.length > 0) {
-        for (let i = 0; i < tiles.errors.length; i++) {
+        /* for (let i = 0; i < tiles.errors.length; i++) {
           if (Date.now() > tiles.errors[i].create + 500) {
             dispatchTiles({ type: "REMOVE_ERROR_SHOW", index: i, language });
             setTimeout(() => {
               dispatchTiles({ type: "REMOVE_ERROR", index: i, language });
             }, 200);
           }
-        }
+        } */
+        dispatchTiles({
+          type: "REMOVE_ERROR_SHOW",
+          index: 0,
+          language,
+        });
+        setTimeout(() => {
+          dispatchTiles({
+            type: "REMOVE_ERROR",
+            index: 0,
+            language,
+          });
+        }, 300);
       }
     }, 250);
     return () => clearInterval(interval);
@@ -241,6 +253,8 @@ function App() {
         <StatsModal onClose={() => setShowStatsModal(false)} />
       </CSSTransition>
       <Header
+        darkTheme={darkTheme}
+        setDarkTheme={setDarkTheme}
         onSettings={setShowSettings}
         showStats={() => setShowStatsModal(true)}
         onManual={setShowManual}
