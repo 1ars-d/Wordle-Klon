@@ -105,7 +105,12 @@ const Tile = (props) => {
   }, [first]);
 
   useEffect(() => {
-    if (!first && divRef.current && divRef.current.style.animation === "") {
+    if (
+      props.value !== "" &&
+      !first &&
+      divRef.current &&
+      divRef.current.style.animation === ""
+    ) {
       divRef.current.style.animation = "";
       divRef.current.style.animation = "bounce 0.15s ease";
       setTimeout(() => (divRef.current.style.animation = ""), 200);

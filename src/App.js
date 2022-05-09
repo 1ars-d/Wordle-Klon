@@ -277,15 +277,19 @@ function App() {
       >
         <StatsModal onClose={() => setShowStatsModal(false)} />
       </CSSTransition>
-      <Header
-        darkTheme={darkTheme}
-        setDarkTheme={setDarkTheme}
-        onSettings={setShowSettings}
-        showStats={() => setShowStatsModal(true)}
-        onManual={setShowManual}
-      />
-      <Grid tiles={tiles.tiles} removeWiggle={removeWiggle} />
-      <Keyboard onKey={keyAddHandler} tiles={tiles.tiles} />
+      {!showSettings && !showManual && (
+        <Header
+          darkTheme={darkTheme}
+          setDarkTheme={setDarkTheme}
+          onSettings={setShowSettings}
+          showStats={() => setShowStatsModal(true)}
+          onManual={setShowManual}
+        />
+      )}
+      <div className="game">
+        <Grid tiles={tiles.tiles} removeWiggle={removeWiggle} />
+        <Keyboard onKey={keyAddHandler} tiles={tiles.tiles} />
+      </div>
     </div>
   );
 }
