@@ -19,7 +19,7 @@ export const reducer = ({ tiles: state, errors }, action) => {
               value: new_state[i].value,
               row: new_state[i].row,
               done: new_state[i].done,
-              class: new_state[i].class + "animation-wiggle ",
+              class: new_state[i].class + "",
             };
           }
           return { tiles: new_state, errors };
@@ -41,7 +41,7 @@ export const reducer = ({ tiles: state, errors }, action) => {
             value: new_state[i].value,
             row: new_state[i].row,
             done: new_state[i].done,
-            class: new_state[i].class + "animation-wiggle ",
+            class: new_state[i].class + "",
           };
         }
         return { tiles: new_state, errors };

@@ -34,6 +34,12 @@ export const INIT_STATE = {
   errors: [],
 };
 
+export const SCHWIERIGKEITS_OPTIONS = [
+  { id: "s_1", name: "Leicht" },
+  { id: "s_2", name: "Mittel" },
+  { id: "s_3", name: "Unmöglich" },
+];
+
 export const TARGET_WORDS_DEUTSCH = [
   "GERNE",
   "ACHSE",

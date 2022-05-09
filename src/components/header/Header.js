@@ -6,7 +6,7 @@ const Header = (props) => {
 
   return (
     <div className="header">
-      <div className="header-link-container">
+      <div className="header-link-container header-left">
         <img
           onClick={() => props.onManual(true)}
           title={language.name === "Deutsch" ? "anleitung" : "manual"}
@@ -15,6 +15,7 @@ const Header = (props) => {
           style={{ marginRight: "10px" }}
         />
         <img
+          className="theme-switch"
           onClick={() => {
             props.setDarkTheme(!props.darkTheme);
             localStorage.setItem("WORDLE_2.0_DARK_THEME", !props.darkTheme);
@@ -28,16 +29,9 @@ const Header = (props) => {
         <span className="title-green">W</span>ORD
         <span className="title-orange">S</span>LE
       </h1>
-      <div
-        style={{
-          display: "flex",
-          gap: "10px",
-          alignItems: "center",
-          justifyContent: "flex-end",
-        }}
-        className="header-link-container"
-      >
+      <div className="header-link-container">
         <svg
+          className="stats-icon"
           xmlns="http://www.w3.org/2000/svg"
           height="24"
           viewBox="0 0 24 24"

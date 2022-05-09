@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
 import useKey from "../../hooks/use-key";
 import LanguageContext from "../../Contexts/LanguageContext";
+import { useSwipeable } from "react-swipeable";
 
 const ManualMenu = (props) => {
   const { language } = useContext(LanguageContext);
   useKey("Escape", () => props.onClose(false));
 
+  const handlers = useSwipeable({
+    onSwipedDown: () => props.onClose(false),
+  });
+
   const isGerman = language.name === "Deutsch";
 
   return (
-    <div className="menu manual">
+    <div className="menu manual" {...handlers}>
       <img alt="" src="/IMG/x.svg" onClick={() => props.onClose()} />
       <h4>{language.name === "Deutsch" ? "ANLEITUNG" : "MANUAL"}</h4>
       <div style={{ fontSize: "1.1rem" }}>

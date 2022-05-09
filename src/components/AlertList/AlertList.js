@@ -18,7 +18,7 @@ const AlertList = (props) => {
       classNames="alert"
       unmountOnExit
     >
-      <Alert value={alert.value} />
+      <Alert value={alert.value} onClick={() => props.onDelete(index)} />
     </CSSTransition>
   ));
 

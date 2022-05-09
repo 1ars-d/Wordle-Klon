@@ -12,6 +12,7 @@ import {
   TARGET_WORDS_ENGLISH,
   TARGET_WORDS_DEUTSCH,
   DICTIONARY_DEUTSCH,
+  SCHWIERIGKEITS_OPTIONS,
 } from "./Data/DATA";
 
 import { parseCase, reducer } from "./Data/Tilereducer";
@@ -21,6 +22,7 @@ import LanguageContext from "./Contexts/LanguageContext";
 import ManualMenu from "./components/Menus/ManualMenu";
 
 function App() {
+  const [isInitial, setIsInitial] = useState(0);
   const [restarting, setRestarting] = useState(false);
   const [hasUpdatedStorage, setHasUpdatedStorage] = useState(false);
   const [tiles, dispatchTiles] = useReducer(reducer, INIT_STATE);
@@ -30,6 +32,7 @@ function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [showManual, setShowManual] = useState(false);
   const [devMode, setDevMode] = useState();
+  const [schwierigkeit, setSchwierigkeit] = useState();
   const [showStatsModal, setShowStatsModal] = useState(false);
   const [darkTheme, setDarkTheme] = useState();
   const { language } = useContext(LanguageContext);
@@ -37,16 +40,9 @@ function App() {
     language.name === "English" ? TARGET_WORDS_ENGLISH : TARGET_WORDS_DEUTSCH;
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (tiles.errors.length > 0) {
-        /* for (let i = 0; i < tiles.errors.length; i++) {
-          if (Date.now() > tiles.errors[i].create + 500) {
-            dispatchTiles({ type: "REMOVE_ERROR_SHOW", index: i, language });
-            setTimeout(() => {
-              dispatchTiles({ type: "REMOVE_ERROR", index: i, language });
-            }, 200);
-          }
-        } */
+    let interval;
+    if (tiles.errors.length > 0) {
+      interval = setInterval(() => {
         dispatchTiles({
           type: "REMOVE_ERROR_SHOW",
           index: 0,
@@ -58,15 +54,19 @@ function App() {
             index: 0,
             language,
           });
-        }, 300);
-      }
-    }, 250);
+        }, 0);
+      }, 500);
+    }
     return () => clearInterval(interval);
   }, [tiles.errors]);
 
   useEffect(() => {
-    restartGame();
-  }, [language]);
+    if (isInitial === 2) {
+      restartGame();
+    } else {
+      setIsInitial((prev) => prev + 1);
+    }
+  }, [language, schwierigkeit]);
 
   useEffect(() => {
     if (hasEnded.ended) {
@@ -138,8 +138,16 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const stored_schwierigkeit = localStorage.getItem(
+      "WORDLE_2.0_SCHWIERIGKEIT"
+    );
     const stored_dev_mode = localStorage.getItem("WORDLE_2.0_DEV_MODE");
     const stored_dark_theme = localStorage.getItem("WORDLE_2.0_DARK_THEME");
+    if (stored_schwierigkeit) {
+      setSchwierigkeit(JSON.parse(stored_schwierigkeit));
+    } else {
+      setSchwierigkeit(SCHWIERIGKEITS_OPTIONS[1]);
+    }
     if (stored_dev_mode) {
       if (stored_dev_mode === "false") {
         setDevMode(false);
@@ -205,7 +213,16 @@ function App() {
   };
   return (
     <div className={`container ${darkTheme ? "dark-mode" : "white-mode"}`}>
-      <AlertList alerts={tiles.errors} />
+      <AlertList
+        alerts={tiles.errors}
+        onDelete={(index) =>
+          dispatchTiles({
+            type: "REMOVE_ERROR",
+            index: index,
+            language,
+          })
+        }
+      />
       <CSSTransition
         in={showSettings}
         timeout={100}
@@ -213,6 +230,14 @@ function App() {
         unmountOnExit
       >
         <Settingsmenu
+          schwierigkeit={schwierigkeit}
+          setSchwierigkeit={(updated) => {
+            setSchwierigkeit(updated);
+            localStorage.setItem(
+              "WORDLE_2.0_SCHWIERIGKEIT",
+              JSON.stringify(updated)
+            );
+          }}
           darkTheme={darkTheme}
           setDarkTheme={setDarkTheme}
           onClose={() => setShowSettings(false)}

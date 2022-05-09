@@ -8,14 +8,19 @@ import LanguageContext, {
   LANGUAGE_OPTIONS,
 } from "../../Contexts/LanguageContext";
 import Selector from "../UI/Selector/Selector";
+import { useSwipeable } from "react-swipeable";
+import { SCHWIERIGKEITS_OPTIONS } from "../../Data/DATA";
 
 export const Settingsmenu = (props) => {
   const { language, setLanguage } = useContext(LanguageContext);
+  const handlers = useSwipeable({
+    onSwipedDown: () => props.onClose(false),
+  });
 
   useKey("Escape", () => props.onClose(false));
 
   return (
-    <div className="menu">
+    <div className="menu" {...handlers}>
       <img alt="" src="/IMG/x.svg" onClick={() => props.onClose(false)} />
       <h4>{language.name === "Deutsch" ? "EINSTELLUNGEN" : "SETTINGS"}</h4>
       <div className="menu-part">
@@ -26,6 +31,16 @@ export const Settingsmenu = (props) => {
           options={LANGUAGE_OPTIONS}
         />
       </div>
+      {language.name === "" && (
+        <div className="menu-part">
+          <p>Schwierigkeit</p>
+          <Selector
+            active={props.schwierigkeit}
+            setActive={props.setSchwierigkeit}
+            options={SCHWIERIGKEITS_OPTIONS}
+          />
+        </div>
+      )}
       <div className="menu-part">
         <p>
           {language.name === "Deutsch" ? "Entwicklermodus" : "Developer Mode"}
