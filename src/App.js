@@ -277,15 +277,13 @@ function App() {
       >
         <StatsModal onClose={() => setShowStatsModal(false)} />
       </CSSTransition>
-      {!showSettings && !showManual && (
-        <Header
-          darkTheme={darkTheme}
-          setDarkTheme={setDarkTheme}
-          onSettings={setShowSettings}
-          showStats={() => setShowStatsModal(true)}
-          onManual={setShowManual}
-        />
-      )}
+      <Header
+        darkTheme={darkTheme}
+        setDarkTheme={setDarkTheme}
+        onSettings={setShowSettings}
+        showStats={() => setShowStatsModal(true)}
+        onManual={setShowManual}
+      />
       <div className="game">
         <Grid tiles={tiles.tiles} removeWiggle={removeWiggle} />
         <Keyboard onKey={keyAddHandler} tiles={tiles.tiles} />
