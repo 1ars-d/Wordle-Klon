@@ -6,7 +6,7 @@ const Grid = (props) => {
   const [gridHeight, setGridHeight] = useState(0);
 
   useEffect(() => {
-    setGridHeight(document.body.clientHeight - 50 - 210);
+    setGridHeight(document.body.offsetHeight - 50 - 210);
   }, [window.screen.height]);
 
   return (
