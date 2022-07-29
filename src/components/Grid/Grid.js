@@ -17,9 +17,8 @@ const Grid = (props) => {
         className="guess-grid"
         style={{
           height: (document.body.offsetHeight - 50 - 210).toString() + "px",
-          width: (document.body.offsetHeight - 50 - 210) * (5 / 6)).toString() + "px",
-        }}
-      >
+          width: (document.body.offsetHeight - 50 - 210) * (5 / 6).toString() + "px",
+        }}>
         <div className="row-5">
           {props.tiles.slice(0, 5).map((tile, i) => {
             const index = i;
