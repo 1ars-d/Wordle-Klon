@@ -3,12 +3,12 @@ import Tile from "./Tile";
 import { useState, useEffect } from "react";
 
 const Grid = (props) => {
-  const [gridHeight, setGridHeight] = useState(document.body.offsetHeight - 50 - 210);
+  const [gridHeight, setGridHeight] = useState(0);
 
   useEffect(() => {
     setGridHeight(document.body.offsetHeight - 50 - 210);
     setTimeout(() => setGridHeight(document.body.offsetHeight - 50 - 210), 300)
-    console.log("size set!!!")
+    console.log("size set!!!asdf")
   }, [window.screen.height]);
 
   return (
@@ -16,8 +16,8 @@ const Grid = (props) => {
       <div
         className="guess-grid"
         style={{
-          height: gridHeight > 0 ? gridHeight.toString() + "px" : (document.body.offsetHeight - 50 - 210).toString() + "px",
-          width: (gridHeight > 0 ?  gridHeight : (document.body.offsetHeight - 50 - 210) * (5 / 6)).toString() + "px",
+          height: (document.body.offsetHeight - 50 - 210).toString() + "px",
+          width: (document.body.offsetHeight - 50 - 210) * (5 / 6)).toString() + "px",
         }}
       >
         <div className="row-5">
