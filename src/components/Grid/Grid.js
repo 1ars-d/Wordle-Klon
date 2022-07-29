@@ -3,7 +3,7 @@ import Tile from "./Tile";
 import { useState, useEffect } from "react";
 
 const Grid = (props) => {
-  const [gridHeight, setGridHeight] = useState(0);
+  const [gridHeight, setGridHeight] = useState(document.body.offsetHeight - 50 - 210);
 
   useEffect(() => {
     setGridHeight(document.body.offsetHeight - 50 - 210);
