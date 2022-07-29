@@ -15,8 +15,8 @@ const Grid = (props) => {
       <div
         className="guess-grid"
         style={{
-          height: gridHeight.toString() + "px",
-          width: (gridHeight * (5 / 6)).toString() + "px",
+          height: gridHeight > 0 ? gridHeight.toString() + "px" : (document.body.offsetHeight - 50 - 210).toString() + "px",
+          width: (gridHeight > 0 ?  gridHeight : (document.body.offsetHeight - 50 - 210) * (5 / 6)).toString() + "px",
         }}
       >
         <div className="row-5">
