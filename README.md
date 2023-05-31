@@ -10,3 +10,7 @@
 A simple WORDLE clone using React JS
 
 Play at [wordle.farning.de](https://wordle.farning.de/)
+
+Here is a screenshot:
+
+![Screenshot](public/screenshot.png "Screenshot")
